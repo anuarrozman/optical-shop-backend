@@ -45,4 +45,14 @@ public class AppointmentController {
     public void delete(@PathVariable Long id) {
         appointmentService.cancelAppointment(id);
     }
+
+    @GetMapping("/today")
+    public List<Appointment> listTodaysAppointments() {
+        return appointmentService.getTodaysAppointments();
+    }
+
+    @GetMapping("/by-date")
+    public List<Appointment> listByDate(@RequestParam String date) {
+        return appointmentService.getAppointmentsForDate(date);
+    }
 }
